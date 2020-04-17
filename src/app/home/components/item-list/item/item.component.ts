@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ItemMapped } from 'src/app/home/services/data/_interfaces_/data.mapped.interface';
+import { EventService } from 'src/app/home/services/event/event.service';
 
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
-  styleUrls: ['./item.component.scss']
+  styleUrls: ['./item.component.scss'],
 })
 export class ItemComponent implements OnInit {
+  @Input() public item: ItemMapped;
+  constructor(private eventService: EventService) {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  public btnClick(itemSelected: ItemMapped) {
+    this.eventService.emitSelectedItem(itemSelected);
   }
-
 }

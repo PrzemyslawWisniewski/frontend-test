@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ItemMapped } from '../../services/data/_interfaces_/data.mapped.interface';
 
 @Component({
   selector: 'app-item-list',
   templateUrl: './item-list.component.html',
-  styleUrls: ['./item-list.component.scss']
+  styleUrls: ['./item-list.component.scss'],
 })
 export class ItemListComponent implements OnInit {
-
-  constructor() { }
+  @Input() public items: Array<ItemMapped>;
+  // @Output() selectedItem: EventEmitter<ItemMapped> = new EventEmitter();
+  constructor() {}
 
   ngOnInit(): void {
+    setTimeout(() => {
+      console.log('list comp ', this.items);
+    }, 1000);
   }
-
 }

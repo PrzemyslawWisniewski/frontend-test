@@ -9,11 +9,19 @@ import { HeaderComponent } from './home/components/header/header.component';
 import { NavigationComponent } from './home/components/navigation/navigation.component';
 import { ItemListComponent } from './home/components/item-list/item-list.component';
 import { ItemComponent } from './home/components/item-list/item/item.component';
+import { ServicesModule } from './home/services/services.module';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, HeaderComponent, NavigationComponent, ItemListComponent, ItemComponent],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    HeaderComponent,
+    NavigationComponent,
+    ItemListComponent,
+    ItemComponent,
+  ],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, ServicesModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
