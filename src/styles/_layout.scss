@@ -1,3 +1,5 @@
+$headerHeight: 64px;
+
 html {
   box-sizing: border-box;
 }
@@ -10,4 +12,51 @@ html {
 
 body {
   font-family: 'Soleil', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  // align-items: center;
+  // justify-content: center;
+}
+
+header {
+  flex-basis: 100%;
+  height: $headerHeight;
+  background-color: red;
+}
+
+aside {
+  flex: 1;
+  background-color: orange;
+}
+
+main {
+  flex: 3;
+  background-color: yellowgreen;
+}
+
+@supports (display: grid) {
+  .container {
+    display: grid;
+    grid-template:
+      'header header ' $headerHeight
+      'navigation content ';
+    grid-template-columns: 1fr 5fr;
+  }
+
+  header {
+    grid-area: header;
+  }
+
+  aside {
+    grid-area: navigation;
+  }
+
+  main {
+    grid-area: content;
+  }
 }

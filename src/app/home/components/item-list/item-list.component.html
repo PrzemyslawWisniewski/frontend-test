@@ -1,4 +1,6 @@
-<p>item-list works!</p>
-<div *ngFor="let item of items">
-  <app-item [item]="item"></app-item>
+<div class="wrapper">
+  <input type="text" />
+  <ng-container *ngFor="let item of items">
+    <app-item [item]="item"></app-item>
+  </ng-container>
 </div>

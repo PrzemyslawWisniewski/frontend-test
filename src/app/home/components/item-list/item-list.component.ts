@@ -8,12 +8,7 @@ import { ItemMapped } from '../../services/data/_interfaces_/data.mapped.interfa
 })
 export class ItemListComponent implements OnInit {
   @Input() public items: Array<ItemMapped>;
-  // @Output() selectedItem: EventEmitter<ItemMapped> = new EventEmitter();
   constructor() {}
 
-  ngOnInit(): void {
-    setTimeout(() => {
-      console.log('list comp ', this.items);
-    }, 1000);
-  }
+  ngOnInit(): void {}
 }
