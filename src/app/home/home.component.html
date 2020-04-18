@@ -6,7 +6,11 @@
     <app-navigation></app-navigation>
   </aside>
   <main>
-    <app-item-selected [itemSelected]="itemSelected"></app-item-selected>
-    <app-item-list [items]="items"></app-item-list>
+    <app-item-selected
+      *ngIf="itemSelected"
+      (btnClick)="backNavigation()"
+      [itemSelected]="itemSelected"
+    ></app-item-selected>
+    <app-item-list *ngIf="!itemSelected" [items]="items"></app-item-list>
   </main>
 </div>

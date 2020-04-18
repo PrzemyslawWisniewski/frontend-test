@@ -1,1 +1,13 @@
-<p>{{ itemSelected | json }}</p>
+<div class="wrapper">
+  <div class="card">
+    <div class="">
+      <p>Hi, I'm Item with id: {{ itemSelected?.id }}</p>
+      <p>My name is: {{ itemSelected?.title }}</p>
+      <p *ngIf="itemSelected?.parent_id === null">I don't have a parent</p>
+      <p *ngIf="itemSelected?.parent_id !== null">
+        And my parent is item with id: {{ itemSelected?.parent_id }}
+      </p>
+    </div>
+    <button (click)="btnClicked()">Back</button>
+  </div>
+</div>

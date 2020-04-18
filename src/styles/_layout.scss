@@ -19,6 +19,12 @@ body {
   flex-wrap: wrap;
 }
 
+.wrapper {
+  padding: $main-content-wrapper;
+}
+
+// TODO make a generic card class
+
 header {
   flex-basis: 100%;
   height: $header-height;

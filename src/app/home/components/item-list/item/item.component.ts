@@ -13,7 +13,7 @@ export class ItemComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  public btnClick(itemSelected: ItemMapped) {
+  public btnClick(itemSelected: ItemMapped): void {
     this.eventService.emitSelectedItem(itemSelected);
   }
 }

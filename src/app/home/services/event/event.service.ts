@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { ItemMapped } from '../data/_interfaces_/data.mapped.interface';
 
 @Injectable({
@@ -11,11 +11,11 @@ export class EventService {
 
   constructor() {}
 
-  emitSelectedItem(item: ItemMapped) {
+  public emitSelectedItem(item: ItemMapped): void {
     this.selectedItemEvent.next(item);
   }
 
-  eventListner() {
+  public eventListner(): Observable<ItemMapped> {
     return this.selectedItemEvent.asObservable();
   }
 }

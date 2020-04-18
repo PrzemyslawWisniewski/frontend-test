@@ -46,6 +46,10 @@ export class HomeComponent implements OnInit, OnDestroy {
       });
   }
 
+  public backNavigation(): void {
+    this.itemSelected = null;
+  }
+
   ngOnDestroy(): void {
     this.unsubscribeAll$.next();
     this.unsubscribeAll$.complete();

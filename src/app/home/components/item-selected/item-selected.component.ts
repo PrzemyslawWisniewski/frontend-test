@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ItemMapped } from '../../services/data/_interfaces_/data.mapped.interface';
 
 @Component({
@@ -8,7 +8,12 @@ import { ItemMapped } from '../../services/data/_interfaces_/data.mapped.interfa
 })
 export class ItemSelectedComponent implements OnInit {
   @Input() public itemSelected: ItemMapped;
+  @Output() public btnClick: EventEmitter<boolean> = new EventEmitter<boolean>();
   constructor() {}
 
   ngOnInit(): void {}
+
+  public btnClicked(): void {
+    this.btnClick.emit(true);
+  }
 }

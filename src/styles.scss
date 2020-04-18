@@ -4,3 +4,12 @@
 @import 'styles/_mixins';
 @import 'styles/_variables';
 @import 'styles/_layout';
+
+button:not(.magnifying) {
+  color: $text-white;
+  background-color: $btn-bg;
+  border: none;
+  height: 40px;
+  width: 117px;
+  @include border-radius($radius);
+}
