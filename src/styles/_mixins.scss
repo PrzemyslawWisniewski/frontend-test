@@ -1,0 +1,15 @@
+@mixin border-radius($radius) {
+  border-radius: $radius;
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+}
+
+@mixin background-image($url) {
+  background-image: url($url);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: auto;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}

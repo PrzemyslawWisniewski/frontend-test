@@ -1,0 +1,22 @@
+@import 'styles/_colors.scss';
+
+.container {
+  padding: 0 40px;
+  & .logo,
+  .user {
+    display: inline-flex;
+    align-self: center;
+  }
+  & .logo {
+    justify-content: flex-start;
+  }
+  & .user {
+    justify-content: flex-end;
+    &-name {
+      color: $text-light;
+      padding: 0 10px;
+      font-size: 14px;
+      line-height: 29px;
+    }
+  }
+}

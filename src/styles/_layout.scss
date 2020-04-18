@@ -19,32 +19,32 @@ body {
 .container {
   display: flex;
   flex-wrap: wrap;
-  // align-items: center;
-  // justify-content: center;
 }
 
 header {
   flex-basis: 100%;
   height: $headerHeight;
-  background-color: red;
+  background-color: $bg-white;
+  border-bottom: 1px solid $header-border;
 }
 
 aside {
   flex: 1;
-  background-color: orange;
+  background-color: $bg-white;
+  padding: 40px;
 }
 
 main {
   flex: 3;
-  background-color: yellowgreen;
+  background-color: $bg-light;
 }
 
 @supports (display: grid) {
   .container {
     display: grid;
     grid-template:
-      'header header ' $headerHeight
-      'navigation content ';
+      'header header' $headerHeight
+      'navigation content';
     grid-template-columns: 1fr 5fr;
   }
 

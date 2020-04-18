@@ -1,0 +1,32 @@
+@import 'styles/_colors.scss';
+
+a {
+  text-decoration: none;
+}
+
+.banner {
+  margin-bottom: 57px;
+  &-link {
+    color: $text-light;
+    & p {
+      padding-left: 32px;
+      margin: 0;
+    }
+  }
+}
+
+.navigation {
+  & ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  &-list {
+    &-item {
+      margin-bottom: 33px;
+      & a {
+        color: $text-secondary;
+      }
+    }
+  }
+}
