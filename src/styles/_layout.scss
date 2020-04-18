@@ -1,3 +1,11 @@
+html,
+body,
+app-root,
+app-home,
+.container {
+  height: 100%;
+}
+
 html {
   box-sizing: border-box;
 }
@@ -48,9 +56,10 @@ main {
   .container {
     display: grid;
     grid-template:
-      'header header' $header-height
+      'header header'
       'navigation content';
     grid-template-columns: $navigation-width 5fr;
+    grid-template-rows: $header-height auto;
   }
 
   header {

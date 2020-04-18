@@ -1,11 +1,11 @@
 <div class="wrapper">
   <div class="card">
-    <div class="">
+    <div>
       <p>Hi, I'm Item with id: {{ itemSelected?.id }}</p>
       <p>My name is: {{ itemSelected?.title }}</p>
       <p *ngIf="itemSelected?.parent_id === null">I don't have a parent</p>
       <p *ngIf="itemSelected?.parent_id !== null">
-        And my parent is item with id: {{ itemSelected?.parent_id }}
+        And my parent is Item with id: {{ itemSelected?.parent_id }}
       </p>
     </div>
     <button (click)="btnClicked()">Back</button>
