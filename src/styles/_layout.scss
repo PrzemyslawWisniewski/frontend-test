@@ -1,5 +1,3 @@
-$headerHeight: 64px;
-
 html {
   box-sizing: border-box;
 }
@@ -23,12 +21,13 @@ body {
 
 header {
   flex-basis: 100%;
-  height: $headerHeight;
+  height: $header-height;
   background-color: $bg-white;
   border-bottom: 1px solid $header-border;
 }
 
 aside {
+  max-width: $navigation-width;
   flex: 1;
   background-color: $bg-white;
   padding: 40px;
@@ -43,9 +42,9 @@ main {
   .container {
     display: grid;
     grid-template:
-      'header header' $headerHeight
+      'header header' $header-height
       'navigation content';
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: $navigation-width 5fr;
   }
 
   header {

@@ -14,6 +14,7 @@ import { EventService } from './services/event/event.service';
 export class HomeComponent implements OnInit, OnDestroy {
   private unsubscribeAll$: Subject<void> = new Subject();
   public items: Array<ItemMapped>;
+  public itemSelected: ItemMapped;
 
   constructor(
     private dataService: DataService,
@@ -41,7 +42,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       .eventListner()
       .pipe(takeUntil(this.unsubscribeAll$))
       .subscribe(el => {
-        console.log('home comp sub to eventListener', el);
+        (this.itemSelected = el), console.log('home comp sub to eventListener', el);
       });
   }
 

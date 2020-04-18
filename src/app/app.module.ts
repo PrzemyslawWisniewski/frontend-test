@@ -10,6 +10,7 @@ import { NavigationComponent } from './home/components/navigation/navigation.com
 import { ItemListComponent } from './home/components/item-list/item-list.component';
 import { ItemComponent } from './home/components/item-list/item/item.component';
 import { ServicesModule } from './home/services/services.module';
+import { ItemSelectedComponent } from './home/components/item-selected/item-selected.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ServicesModule } from './home/services/services.module';
     NavigationComponent,
     ItemListComponent,
     ItemComponent,
+    ItemSelectedComponent,
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, ServicesModule],
   providers: [],
