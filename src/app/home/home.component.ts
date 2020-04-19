@@ -1,10 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { map, takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { ItemMapped } from './services/data/_interfaces_/data.mapped.interface';
 import { DataService } from './services/data/data.service';
 import { DataMapperSevice } from './services/data/data.mapper.service';
 import { EventService } from './services/event/event.service';
+import { HomeService } from './home.service';
 
 @Component({
   selector: 'app-home',
@@ -12,14 +13,17 @@ import { EventService } from './services/event/event.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  private unsubscribeAll$: Subject<void> = new Subject();
   public items: Array<ItemMapped>;
   public itemSelected: ItemMapped;
+  private unsubscribeAll$: Subject<void> = new Subject();
+
+  private items$: Observable<Array<ItemMapped>>;
 
   constructor(
     private dataService: DataService,
     private dataMapperSevice: DataMapperSevice,
     private eventService: EventService,
+    private homeService: HomeService,
   ) {}
 
   ngOnInit(): void {
@@ -34,7 +38,15 @@ export class HomeComponent implements OnInit, OnDestroy {
         map(response => this.dataMapperSevice.mapData(response)), // TODO delete
         takeUntil(this.unsubscribeAll$),
       )
-      .subscribe(next => ((this.items = next), console.log('home comp sub', next)));
+      .subscribe(
+        resp => (
+          (this.items = resp), this.emitItemsObservable(), console.log('getApiData HomeComp', resp)
+        ),
+      );
+  }
+
+  public emitItemsObservable(): void {
+    this.homeService.emitItems(this.items);
   }
 
   public subscribeToItemSelect(): void {
@@ -42,11 +54,13 @@ export class HomeComponent implements OnInit, OnDestroy {
       .eventListner()
       .pipe(takeUntil(this.unsubscribeAll$))
       .subscribe(el => {
-        (this.itemSelected = el), console.log('home comp sub to eventListener', el);
+        this.itemSelected = el;
       });
   }
 
   public backNavigation(): void {
+    this.emitItemsObservable();
+    console.log('backNavigation', this.items);
     this.itemSelected = null;
   }
 

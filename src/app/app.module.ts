@@ -11,6 +11,7 @@ import { ItemListComponent } from './home/components/item-list/item-list.compone
 import { ItemComponent } from './home/components/item-list/item/item.component';
 import { ServicesModule } from './home/services/services.module';
 import { ItemSelectedComponent } from './home/components/item-selected/item-selected.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,14 @@ import { ItemSelectedComponent } from './home/components/item-selected/item-sele
     ItemComponent,
     ItemSelectedComponent,
   ],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule, ServicesModule],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    ServicesModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

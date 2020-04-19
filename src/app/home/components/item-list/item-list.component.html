@@ -1,11 +1,21 @@
 <div class="wrapper">
   <div class="input">
-    <input type="text" class="ie-input" placeholder="Search" />
+    <input
+      label="Search"
+      type="text"
+      class="ie-input"
+      placeholder="Search"
+      [formControl]="filter"
+    />
     <div class="icon">
       <button class="magnifying"></button>
     </div>
   </div>
-  <ng-container *ngFor="let item of items">
+  {{ filteredStates$ | async | json }}
+  <!-- <ng-container *ngFor="let item of items">
+    <app-item [item]="item"></app-item>
+  </ng-container> -->
+  <ng-container *ngFor="let item of filteredStates$ | async">
     <app-item [item]="item"></app-item>
   </ng-container>
 </div>

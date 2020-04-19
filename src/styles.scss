@@ -1,9 +1,9 @@
 @charset "utf-8";
 
 // Global helpers
-@import 'styles/_mixins';
-@import 'styles/_variables';
-@import 'styles/_layout';
+@import './styles/_mixins';
+@import './styles/_variables';
+@import './styles/_layout';
 
 button:not(.magnifying) {
   color: $text-white;
