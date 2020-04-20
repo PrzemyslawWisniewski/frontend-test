@@ -1,11 +1,8 @@
 @import './styles/_variables';
 
-html,
-body,
 app-root,
-app-home,
-.container {
-  height: 100%;
+app-home {
+  display: block;
 }
 
 html {
@@ -27,6 +24,7 @@ body {
 .container {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row-reverse;
 }
 
 .wrapper {
@@ -42,6 +40,12 @@ header {
   border-bottom: 1px solid $header-border;
 }
 
+.header,
+app-header {
+  height: $header-height;
+  max-height: $header-height;
+}
+
 aside {
   max-width: $navigation-width;
   flex: 1;
@@ -55,6 +59,13 @@ main {
 }
 
 @supports (display: grid) {
+  html,
+  body,
+  app-root,
+  app-home,
+  .container {
+    height: 100%;
+  }
   .container {
     display: grid;
     grid-template:
@@ -74,5 +85,29 @@ main {
 
   main {
     grid-area: content;
+  }
+
+  @media (max-width: $media-max-width) {
+    .container {
+      grid-template:
+        'header' $header-height
+        'content'
+        'navigation';
+    }
+    .wrapper {
+      padding: $mobile-main-content-wrapper;
+    }
+  }
+}
+
+@media (max-width: $media-max-width) {
+  .wrapper {
+    padding: $mobile-main-content-wrapper;
+  }
+  aside {
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+    padding: 40px 0;
   }
 }

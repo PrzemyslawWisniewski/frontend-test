@@ -1,17 +1,15 @@
 @import './styles/_variables.scss';
 
-.container {
-  padding: 0 40px;
+.header {
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
   & .logo,
   .user {
-    display: inline-flex;
+    display: flex;
     align-self: center;
   }
-  & .logo {
-    justify-content: flex-start;
-  }
   & .user {
-    justify-content: flex-end;
     &-name {
       color: $text-light;
       padding: 0 10px;

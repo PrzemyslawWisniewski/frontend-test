@@ -2,9 +2,6 @@
   <header>
     <app-header></app-header>
   </header>
-  <aside>
-    <app-navigation></app-navigation>
-  </aside>
   <main>
     <app-item-selected
       *ngIf="itemSelected"
@@ -13,4 +10,7 @@
     ></app-item-selected>
     <app-item-list *ngIf="!itemSelected"></app-item-list>
   </main>
+  <aside>
+    <app-navigation></app-navigation>
+  </aside>
 </div>

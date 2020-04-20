@@ -11,11 +11,12 @@
       <button class="magnifying"></button>
     </div>
   </div>
-  <div *ngFor="let item of filteredStates$" class="pad1">
+  <div *ngFor="let item of filteredStates$">
+    <!-- <div *ngFor="let item of search$ | async"> -->
     <app-item [item]="item"></app-item>
-    <div *ngFor="let item2 of item.children" class="pad2">
+    <div *ngFor="let item2 of item?.children" class="nested-one">
       <app-item [item]="item2"></app-item>
-      <div *ngFor="let item3 of item2.children" class="pad3">
+      <div *ngFor="let item3 of item2?.children" class="nested-two">
         <app-item [item]="item3"></app-item>
       </div>
     </div>
