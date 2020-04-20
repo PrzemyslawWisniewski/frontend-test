@@ -1,11 +1,9 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ItemMapped } from '../../services/data/_interfaces_/data.mapped.interface';
-import { Observable, combineLatest, Subject, from, of } from 'rxjs';
+import { Observable, combineLatest, Subject } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { startWith, map, takeUntil } from 'rxjs/operators';
-import { DataService } from '../../services/data/data.service';
 import { HomeService } from '../../home.service';
-import { DataMapperSevice } from '../../services/data/data.mapper.service';
 
 @Component({
   selector: 'app-item-list',
@@ -19,11 +17,7 @@ export class ItemListComponent implements OnInit, OnDestroy {
   public filteredStates$: Array<any>;
   private unsubscribeAll$: Subject<void> = new Subject();
 
-  constructor(
-    private dataService: DataService,
-    private homeService: HomeService,
-    private dataMapperSevice: DataMapperSevice,
-  ) {
+  constructor(private homeService: HomeService) {
     this.filter = new FormControl('');
     this.filter$ = this.filter.valueChanges.pipe(startWith(''));
   }
@@ -33,14 +27,11 @@ export class ItemListComponent implements OnInit, OnDestroy {
     this.filterItems();
   }
 
-  public getItemList() {
-    this.search$ = this.dataService.getDataFromApi().pipe(
-      map(response => this.dataMapperSevice.mapData(response)),
-      takeUntil(this.unsubscribeAll$),
-    );
+  private getItemList() {
+    this.search$ = this.homeService.itemsObseravble$;
   }
 
-  public filterItems() {
+  private filterItems() {
     return combineLatest([this.search$, this.filter$])
       .pipe(
         map(([search, filterString]) =>

@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.subscribeToItemSelect();
   }
 
-  public getApiData(): void {
+  private getApiData(): void {
     this.dataService
       .getDataFromApi()
       .pipe(
@@ -39,11 +39,11 @@ export class HomeComponent implements OnInit, OnDestroy {
       .subscribe(resp => ((this.items = resp), this.emitItemsObservable()));
   }
 
-  public emitItemsObservable(): void {
+  private emitItemsObservable(): void {
     this.homeService.emitItems(this.items);
   }
 
-  public subscribeToItemSelect(): void {
+  private subscribeToItemSelect(): void {
     this.eventService
       .eventListner()
       .pipe(takeUntil(this.unsubscribeAll$))
