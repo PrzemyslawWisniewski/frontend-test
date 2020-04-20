@@ -11,11 +11,13 @@
       <button class="magnifying"></button>
     </div>
   </div>
-  {{ filteredStates$ | async | json }}
-  <!-- <ng-container *ngFor="let item of items">
+  <div *ngFor="let item of filteredStates$" class="pad1">
     <app-item [item]="item"></app-item>
-  </ng-container> -->
-  <ng-container *ngFor="let item of filteredStates$ | async">
-    <app-item [item]="item"></app-item>
-  </ng-container>
+    <div *ngFor="let item2 of item.children" class="pad2">
+      <app-item [item]="item2"></app-item>
+      <div *ngFor="let item3 of item2.children" class="pad3">
+        <app-item [item]="item3"></app-item>
+      </div>
+    </div>
+  </div>
 </div>

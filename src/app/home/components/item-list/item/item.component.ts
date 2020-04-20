@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ItemMapped } from 'src/app/home/services/data/_interfaces_/data.mapped.interface';
 import { EventService } from 'src/app/home/services/event/event.service';
 

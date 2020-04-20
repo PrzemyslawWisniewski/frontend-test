@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { map, takeUntil } from 'rxjs/operators';
-import { Subject, Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 import { ItemMapped } from './services/data/_interfaces_/data.mapped.interface';
 import { DataService } from './services/data/data.service';
 import { DataMapperSevice } from './services/data/data.mapper.service';
@@ -16,8 +16,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   public items: Array<ItemMapped>;
   public itemSelected: ItemMapped;
   private unsubscribeAll$: Subject<void> = new Subject();
-
-  private items$: Observable<Array<ItemMapped>>;
 
   constructor(
     private dataService: DataService,
@@ -35,14 +33,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.dataService
       .getDataFromApi()
       .pipe(
-        map(response => this.dataMapperSevice.mapData(response)), // TODO delete
+        map(response => this.dataMapperSevice.mapData(response)),
         takeUntil(this.unsubscribeAll$),
       )
-      .subscribe(
-        resp => (
-          (this.items = resp), this.emitItemsObservable(), console.log('getApiData HomeComp', resp)
-        ),
-      );
+      .subscribe(resp => ((this.items = resp), this.emitItemsObservable()));
   }
 
   public emitItemsObservable(): void {
@@ -59,8 +53,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   public backNavigation(): void {
-    this.emitItemsObservable();
-    console.log('backNavigation', this.items);
     this.itemSelected = null;
   }
 

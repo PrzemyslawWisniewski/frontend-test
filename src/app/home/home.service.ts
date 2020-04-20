@@ -13,7 +13,6 @@ export class HomeService {
   constructor() {}
 
   public emitItems(items: Array<ItemMapped>) {
-    console.log('emitItems HomeService', items);
     this.itemsSource.next(items);
   }
 }
