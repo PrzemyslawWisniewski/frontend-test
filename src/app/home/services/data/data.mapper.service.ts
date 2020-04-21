@@ -19,7 +19,11 @@ export class DataMapperSevice {
     return this.flatten(root);
   }
 
-  private flatten(node: Array<ItemMapped>, result = [], depth = 0): Array<ItemMapped> {
+  private flatten(
+    node: Array<ItemMapped>,
+    result: Array<ItemMapped> = [],
+    depth: number = 0,
+  ): Array<ItemMapped> {
     node.forEach(child => {
       const flattened = Object.assign({}, child);
       flattened.depth = depth;

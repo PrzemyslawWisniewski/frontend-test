@@ -31,7 +31,32 @@ body {
   padding: $main-content-wrapper;
 }
 
-// TODO make a generic card class
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $bg-white;
+  border: 1px solid $border;
+  padding: 0 20px;
+  margin-bottom: 20px;
+  @include border-radius($radius);
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $bg-white;
+  border: 1px solid $border;
+  padding: 0 20px;
+  margin-bottom: 20px;
+  @include border-radius($radius);
+  &-title {
+    color: $text-primary;
+    font-size: 24px;
+    white-space: nowrap;
+  }
+}
 
 header {
   flex-basis: 100%;

@@ -1,22 +1,6 @@
 @import 'styles/_variables.scss';
 @import 'styles/_mixins.scss';
 
-.item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: $bg-white;
-  border: 1px solid $border;
-  padding: 0 20px;
-  margin-bottom: 20px;
-  @include border-radius($radius);
-  &-title {
-    color: $text-primary;
-    font-size: 24px;
-    white-space: nowrap;
-  }
-}
-
 .nested-one {
   margin-left: 20px;
 }

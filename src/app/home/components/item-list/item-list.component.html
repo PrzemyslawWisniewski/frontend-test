@@ -11,6 +11,13 @@
       <button class="magnifying"></button>
     </div>
   </div>
+
+  <ng-container *ngIf="filteredStates?.length === 0">
+    <div class="item card">
+      <p class="item-title">Item not found, try again!</p>
+    </div>
+  </ng-container>
+
   <ng-container *ngFor="let item of filteredStates">
     <app-item [item]="item" [filteredStates]="filteredStates"></app-item>
   </ng-container>
