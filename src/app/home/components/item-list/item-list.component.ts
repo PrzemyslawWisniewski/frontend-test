@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ItemMapped } from '../../services/data/_interfaces_/data.mapped.interface';
-import { Observable, combineLatest, Subject } from 'rxjs';
+import { Observable, combineLatest, Subject, Subscription } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { startWith, map, takeUntil } from 'rxjs/operators';
 import { HomeService } from '../../home.service';
@@ -27,11 +27,11 @@ export class ItemListComponent implements OnInit, OnDestroy {
     this.filterItems();
   }
 
-  private getItemList() {
+  private getItemList(): void {
     this.search$ = this.homeService.itemsObseravble$;
   }
 
-  private filterItems() {
+  private filterItems(): Subscription {
     return combineLatest([this.search$, this.filter$])
       .pipe(
         map(([search, filterString]) =>
@@ -43,6 +43,7 @@ export class ItemListComponent implements OnInit, OnDestroy {
       )
       .subscribe(el => (this.filteredStates = el));
   }
+
   ngOnDestroy(): void {
     this.unsubscribeAll$.next();
     this.unsubscribeAll$.complete();
