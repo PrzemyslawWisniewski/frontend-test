@@ -9,6 +9,7 @@ import { EventService } from 'src/app/home/services/event/event.service';
 })
 export class ItemComponent implements OnInit {
   @Input() public item: ItemMapped;
+  @Input() public filteredStates: Array<ItemMapped>;
   constructor(private eventService: EventService) {}
 
   ngOnInit(): void {}

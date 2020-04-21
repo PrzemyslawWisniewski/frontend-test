@@ -1,4 +1,10 @@
-<div class="item card">
+<div
+  class="item card"
+  [ngClass]="{
+    'nested-one': item.depth === 1 && filteredStates[0]?.title !== item.title,
+    'nested-two': item.depth === 2 && filteredStates[0]?.title !== item.title
+  }"
+>
   <p class="item-title">{{ item.title }}</p>
   <button type="button" class="item-btn" (click)="btnClick(item)">Button</button>
 </div>

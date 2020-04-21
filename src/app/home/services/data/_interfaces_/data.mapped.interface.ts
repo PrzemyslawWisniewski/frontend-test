@@ -3,4 +3,5 @@ export interface ItemMapped {
   title: string;
   parent_id: number | null;
   children: [ItemMapped];
+  depth: number;
 }

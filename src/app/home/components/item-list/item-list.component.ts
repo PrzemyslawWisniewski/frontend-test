@@ -14,7 +14,7 @@ export class ItemListComponent implements OnInit, OnDestroy {
   public filter: FormControl;
   public filter$: Observable<string>;
   public search$: Observable<Array<ItemMapped>>;
-  public filteredStates$: Array<any>;
+  public filteredStates: Array<ItemMapped>;
   private unsubscribeAll$: Subject<void> = new Subject();
 
   constructor(private homeService: HomeService) {
@@ -41,9 +41,8 @@ export class ItemListComponent implements OnInit, OnDestroy {
         ),
         takeUntil(this.unsubscribeAll$),
       )
-      .subscribe(el => (this.filteredStates$ = el));
+      .subscribe(el => (this.filteredStates = el));
   }
-
   ngOnDestroy(): void {
     this.unsubscribeAll$.next();
     this.unsubscribeAll$.complete();
